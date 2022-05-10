@@ -1,0 +1,90 @@
+.list {
+  display: flex;
+  width: 100%;
+  background-color: #c4ddff63;
+  .listContainer {
+    flex: 6;
+  }
+}
+
+.datatable {
+  height: 600px;
+  padding: 20px;
+
+  .btntambahPasien {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    .link {
+      margin-bottom: 10px;
+      text-decoration: none;
+      color: white;
+      font-size: 15px;
+      font-weight: 400;
+      background-color: #4d44b5;
+      padding: 8px;
+      border-radius: 20px;
+
+      .icon {
+        margin-right: 5px;
+        font-size: 17px;
+        color: white;
+      }
+    }
+  }
+
+  .cellWithImg {
+    display: flex;
+    align-items: center;
+
+    .cellImg {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+      margin-left: 20px;
+      object-fit: cover;
+    }
+  }
+
+  .cellWithTindakan {
+    padding: 5px;
+    border-radius: 5px;
+
+    &.Inpatient {
+      color: red;
+      background-color: rgba(255, 0, 0, 0.151);
+    }
+
+    &.Outpatient {
+      color: green;
+      background-color: rgba(0, 255, 0, 0.151);
+    }
+  }
+
+  .cellAction {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .tombolEdit {
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: darkblue;
+      border: 1px dotted rgba(0, 0, 139, 0.541);
+      cursor: pointer;
+    }
+    .tombolHapus {
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: crimson;
+      border: 1px dotted rgba(220, 20, 60, 0.6);
+      cursor: pointer;
+    }
+  }
+  .tableGrid {
+    background-color: white;
+    border-radius: 20px;
+  }
+}
