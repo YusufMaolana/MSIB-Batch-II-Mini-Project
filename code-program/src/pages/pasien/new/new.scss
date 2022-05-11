@@ -14,6 +14,7 @@
     }
 
     .top {
+      font-size: 18px;
       background-color: #4d44b5;
       border-radius: 10px;
       -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0.47);
@@ -56,6 +57,7 @@
 
           input {
             width: 100%;
+            height: 25px;
             padding: 5px;
             background-color: rgba(255, 255, 255, 0.219);
             border-color: rgba(128, 128, 128, 0.377);
@@ -67,7 +69,7 @@
         width: 200px;
         height: 35px;
         margin-right: 12px;
-        margin-top: 300px;
+        margin-top: 310px;
         font-size: 13px;
         border: none;
         border-radius: 17px;
@@ -77,8 +79,8 @@
       .btnReset {
         width: 200px;
         height: 35px;
-        margin-right: 50px;
-        margin-top: 300px;
+        // margin-right: 50px;
+        margin-top: 310px;
         font-size: 13px;
         border: none;
         border-radius: 17px;

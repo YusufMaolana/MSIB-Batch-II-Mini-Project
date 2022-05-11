@@ -1,6 +1,5 @@
 import React from 'react';
 import './navbar.scss';
-import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import PublicOutlinedIcon from '@mui/icons-material/PublicOutlined';
 import SettingsIcon from '@mui/icons-material/Settings';
 
@@ -8,10 +7,10 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="wrapper">
-        <div className="search">
+        {/* <div className="search">
           <input type="text" placeholder="Search..." />
           <TravelExploreIcon />
-        </div>
+        </div> */}
         <div className="items">
           <div className="item">
             <PublicOutlinedIcon className="icon" />
