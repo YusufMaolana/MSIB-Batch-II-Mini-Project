@@ -1,9 +1,7 @@
 import Home from './pages/home/Home';
-import List from './pages/pasien/list-data/List';
-import New from './pages/pasien/new/New';
-// import List1 from './pages/dokter/list-data/List1';
-// import New1 from './pages/dokter/new/New1';
+import DataPasien from './pages/pasien/list-data/DataPasien';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import NewPasien from './pages/pasien/new-data/NewPasien';
 
 function App() {
   return (
@@ -13,8 +11,8 @@ function App() {
           <Route path="/">
             <Route index element={<Home />} />
             <Route path="pasien">
-              <Route index element={<List />} />
-              <Route path="new" element={<New />} />
+              <Route index element={<DataPasien />} />
+              <Route path="new" element={<NewPasien />} />
             </Route>
             <Route path="dokter">
               {/* <Route index element={<List1 />} />

@@ -32,7 +32,6 @@ const getData = gql`
 `;
 
 const List = () => {
-  
   const [datapasien, setDataPasien] = useState();
   const { data: respond, refetch } = useQuery(getData);
   useEffect(() => {
@@ -46,7 +45,11 @@ const List = () => {
   console.log(datapasien);
   return (
     <TableContainer component={Paper} className="table">
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table
+        sx={{ minWidth: 650 }}
+        aria-label="simple table"
+        className="tablechild"
+      >
         <TableHead>
           <TableRow>
             <TableCell className="tableCell">

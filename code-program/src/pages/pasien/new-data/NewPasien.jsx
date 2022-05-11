@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../../../components/navbar/Navbar';
 import Sidebar from '../../../components/sidebar/Sidebar';
-import './new.scss';
+import './newpasien.scss';
 import { useState } from 'react';
 import { gql, useQuery, useMutation } from '@apollo/client';
 
@@ -18,7 +18,7 @@ const insertData = gql`
     }
   }
 `;
-const New = () => {
+const NewPasien = () => {
   const [state, setState] = useState({});
 
   const [masukanData, { data: dataInsert, loading: loadingInsert }] =
@@ -119,4 +119,4 @@ const New = () => {
   );
 };
 
-export default New;
+export default NewPasien;

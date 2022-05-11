@@ -1,14 +1,13 @@
 import React from 'react';
 import Navbar from '../../components/navbar/Navbar';
 import Sidebar from '../../components/sidebar/Sidebar';
-import Table from '../pasien/table/Table';
+import Table from '../pasien/table-home-pasien/Table';
 import AccessibleOutlinedIcon from '@mui/icons-material/AccessibleOutlined';
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 import './home.scss';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import Calendar from '../../components/widget/calendar/Calendar';
 import ReactClock from '../../components/widget/clock/ReactClock';
-
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -39,7 +38,7 @@ const Home = () => {
           </div>
         </div>
         <div className="titleTable">
-          <h1>Table Data Pasien</h1>
+          <h1>Pasien Data</h1>
         </div>
         <div className="listContainer">
           <div className="search">

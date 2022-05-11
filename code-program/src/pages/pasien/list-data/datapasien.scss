@@ -1,0 +1,120 @@
+.datapasien {
+  display: flex;
+  background-color: whitesmoke;
+
+  .datapasienContainer {
+    flex: 6;
+    .titleTop {
+      margin-top: 10px;
+      margin-left: 20px;
+      font-size: 25px;
+      font-weight: bold;
+      color: grey;
+    }
+    .titleTable {
+      background-color: #4d44b5b7;
+      text-align: center;
+      border-style: outset;
+      border-radius: 16px;
+      box-shadow: -3px 11px 84px -21px rgba(0, 0, 0, 0.68);
+      -webkit-box-shadow: -3px 11px 84px -21px rgba(0, 0, 0, 0.68);
+      -moz-box-shadow: -3px 11px 84px -21px rgba(0, 0, 0, 0.68);
+      width: 130px;
+      padding: 5px;
+      margin-left: 80%;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      margin-right: 20px;
+      color: white;
+      font-weight: bold;
+
+      .btndata {
+        color: white;
+        font-size: 18px;
+      }
+    }
+  }
+
+  .listContainer {
+    border-style: outset;
+    border-radius: 10px;
+    box-shadow: 0px 17px 28px 1px rgba(0, 0, 0, 0.53);
+    -webkit-box-shadow: 0px 17px 28px 1px rgba(0, 0, 0, 0.53);
+    -moz-box-shadow: 0px 17px 28px 1px rgba(0, 0, 0, 0.53);
+    padding: 20px;
+    margin: 20px;
+    .table {
+      .cellAction {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        .tombolEdit {
+          padding: 1px 3px;
+          background-color: rgb(0, 231, 0);
+          border-radius: 5px;
+          color: white;
+          font-size: 5px;
+          cursor: pointer;
+        }
+        .tombolHapus {
+          padding: 1px 3px;
+          border-radius: 5px;
+          background-color: red;
+          color: white;
+          font-size: 5px;
+          cursor: pointer;
+        }
+        .tombolInfo {
+          padding: 1px 3px;
+          border-radius: 5px;
+          background-color: rgb(38, 0, 255);
+          color: white;
+          font-size: 5px;
+          cursor: pointer;
+        }
+      }
+      .tablechild {
+        border-style: none;
+        background-color: #4d44b5b7;
+      }
+      .tableCell {
+        color: white;
+      }
+
+      .cellWrapper {
+        display: flex;
+        align-items: center;
+      }
+
+      .tindakan {
+        padding: 5px;
+        border-radius: 5px;
+
+        &.Inpatient {
+          color: white;
+          background-color: red;
+        }
+
+        &.Outpatient {
+          color: white;
+          background-color: green;
+        }
+      }
+    }
+
+    .search {
+      margin-right: 10px;
+      margin-bottom: 10px;
+      align-items: center;
+      width: 200px;
+      border: 0.1px solid lightgray;
+      padding: 7px;
+      border-radius: 10px;
+      .icon {
+        margin-left: 7px;
+        font-size: 19px;
+      }
+    }
+  }
+}

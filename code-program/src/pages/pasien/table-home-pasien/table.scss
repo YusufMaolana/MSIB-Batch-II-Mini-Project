@@ -1,8 +1,12 @@
 .table {
-  background-color: rgb(255, 255, 255);
+  .tablechild {
+    border-style: none;
+    background-color: #4d44b5b7;
+  }
   .tableCell {
+    color: white;
     .icon {
-      color: #4d44b5;
+      color: red;
       gap: 10px;
       font-size: 18px;
       padding: 1px;
@@ -21,13 +25,13 @@
     border-radius: 5px;
 
     &.Inpatient {
-      color: red;
-      background-color: rgba(255, 0, 0, 0.151);
+      color: white;
+      background-color: red;
     }
 
     &.Outpatient {
-      color: green;
-      background-color: rgba(0, 255, 0, 0.151);
+      color: white;
+      background-color: green;
     }
   }
 }

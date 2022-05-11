@@ -1,7 +1,6 @@
-import React from 'react';
 import Navbar from '../../../components/navbar/Navbar';
 import Sidebar from '../../../components/sidebar/Sidebar';
-import './list.scss';
+import React, { useEffect } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -18,9 +17,11 @@ import AccessibleOutlinedIcon from '@mui/icons-material/AccessibleOutlined';
 import ReportOutlinedIcon from '@mui/icons-material/ReportOutlined';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import AssignmentLateIcon from '@mui/icons-material/AssignmentLate';
-import AddIcon from '@mui/icons-material/Add';
-import { gql, useQuery, useMutation } from '@apollo/client';
-import { useState, useEffect } from 'react';
+import SaveAsIcon from '@mui/icons-material/SaveAs';
+import './datapasien.scss';
+import TravelExploreIcon from '@mui/icons-material/TravelExplore';
+import { gql, useQuery, useMutation, setLogVerbosity } from '@apollo/client';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const getData = gql`
@@ -37,7 +38,7 @@ const getData = gql`
   }
 `;
 
-const List = () => {
+const Home = () => {
   const [datapasien, setDataPasien] = useState();
   const { data: respond, refetch } = useQuery(getData);
   useEffect(() => {
@@ -48,53 +49,39 @@ const List = () => {
     }
   }, [respond]);
   return (
-    <div className="list">
+    <div className="datapasien">
       <Sidebar />
-      <div className="listContainer">
+      <div className="datapasienContainer">
         <Navbar />
-        <div className="datatable">
-          <div className="btntambahPasien">
-            <Link to="/pasien/new" className="link">
-              <AddIcon className="icon" />
-              Data Baru
-            </Link>
+        <div className="titleTop">Pasien Data</div>
+        <div className="titleTable">
+          <Link to="/pasien/new" style={{ textDecoration: 'none' }}>
+            <div className="btndata">+ New Data</div>
+          </Link>
+        </div>
+        <div className="listContainer">
+          <div className="search">
+            <input type="text" placeholder="Search..." />
+            <TravelExploreIcon className="icon" />
           </div>
           <TableContainer component={Paper} className="table">
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <Table
+              sx={{ minWidth: 650 }}
+              aria-label="simple table"
+              className="tablechild"
+            >
               <TableHead>
                 <TableRow>
+                  <TableCell className="tableCell">ID Pasien</TableCell>
+                  <TableCell className="tableCell">Nama Pasien</TableCell>
                   <TableCell className="tableCell">
-                    <AccountBoxOutlinedIcon className="icon" />
-                    ID Pasien
-                  </TableCell>
-                  <TableCell className="tableCell">
-                    <BadgeOutlinedIcon className="icon" />
-                    Nama Pasien
-                  </TableCell>
-                  <TableCell className="tableCell">
-                    <DateRangeIcon className="icon" />
                     Tanggal Pemeriksaaan
                   </TableCell>
-                  <TableCell className="tableCell">
-                    <ContactPhoneOutlinedIcon className="icon" />
-                    No Telepon
-                  </TableCell>
-                  <TableCell className="tableCell">
-                    <MapsHomeWorkOutlinedIcon className="icon" />
-                    Alamat
-                  </TableCell>
-                  <TableCell className="tableCell">
-                    <AccessibleOutlinedIcon className="icon" />
-                    Diagnosa
-                  </TableCell>
-                  <TableCell className="tableCell">
-                    <ReportOutlinedIcon className="icon" />
-                    Tindakan
-                  </TableCell>
-                  <TableCell className="tableCell">
-                    <ReportOutlinedIcon className="icon" />
-                    Aksi
-                  </TableCell>
+                  <TableCell className="tableCell">No Telepon</TableCell>
+                  <TableCell className="tableCell">Alamat</TableCell>
+                  <TableCell className="tableCell">Diagnosa</TableCell>
+                  <TableCell className="tableCell">Tindakan</TableCell>
+                  <TableCell className="tableCell">Action</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -120,10 +107,13 @@ const List = () => {
                     <TableCell className="tableCell">
                       <div className="cellAction">
                         <div className="tombolEdit">
-                          <AssignmentLateIcon />
+                          <SaveAsIcon />
                         </div>
                         <div className="tombolHapus">
                           <DeleteForeverIcon />
+                        </div>
+                        <div className="tombolInfo">
+                          <AssignmentLateIcon />
                         </div>
                       </div>
                     </TableCell>
@@ -138,4 +128,4 @@ const List = () => {
   );
 };
 
-export default List;
+export default Home;
