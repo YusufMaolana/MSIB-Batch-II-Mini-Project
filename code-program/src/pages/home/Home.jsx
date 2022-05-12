@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar/Navbar';
 import Sidebar from '../../components/sidebar/Sidebar';
 import Table from '../pasien/table-home-pasien/Table';
@@ -9,8 +9,31 @@ import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import Calendar from '../../components/widget/calendar/Calendar';
 import ReactClock from '../../components/widget/clock/ReactClock';
 import { Link } from 'react-router-dom';
-
+import {
+  gql,
+  useQuery,
+  useMutation,
+  setLogVerbosity,
+  useSubscription,
+} from '@apollo/client';
+const Hitung = gql`
+  subscription MySubscription {
+    rekammedis_pasien_aggregate {
+      aggregate {
+        count(columns: id)
+      }
+    }
+  }
+`;
 const Home = () => {
+  const [a, sa] = useState();
+  const { data } = useSubscription(Hitung);
+  useEffect(() => {
+    if (data) {
+      sa(data?.rekammedis_pasien_aggregate.aggregate.count || '');
+    }
+  }, [data]);
+  console.log(a);
   return (
     <div className="home">
       <Sidebar />
@@ -24,7 +47,7 @@ const Home = () => {
             </Link>
             <div className="titleicon">
               <p className="pasien">Pasien</p>
-              <p className="count">80</p>
+              <p className="count">{a}</p>
             </div>
           </div>
           <div className="left">

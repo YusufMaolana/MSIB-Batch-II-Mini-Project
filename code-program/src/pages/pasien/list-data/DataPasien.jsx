@@ -20,34 +20,79 @@ import AssignmentLateIcon from '@mui/icons-material/AssignmentLate';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 import './datapasien.scss';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
-import { gql, useQuery, useMutation, setLogVerbosity } from '@apollo/client';
+import {
+  gql,
+  useQuery,
+  useMutation,
+  setLogVerbosity,
+  useSubscription,
+} from '@apollo/client';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const getData = gql`
-  query MyQuery {
+  subscription MySubscription {
     rekammedis_pasien {
       alamat
-      diagnosa
+      diagnosa_awal
+      diagnosa_sekunder
+      email
+      hasil_pemeriksaan
       id
+      jenis_kelamin
       nama_pasien
+      no_rekammedis
       no_telepon
+      obat
+      riwayat_alergi
       tanggal_pemeriksaan
       tindakan
     }
   }
 `;
 
+// const editData = gql`
+//   query MyQuery($_eq: Int!) {
+//     rekammedis_pasien(where: { id: { _eq: $_eq } }) {
+//       alamat
+//       diagnosa_awal
+//       diagnosa_sekunder
+//       email
+//       hasil_pemeriksaan
+//       id
+//       jenis_kelamin
+//       nama_pasien
+//       no_rekammedis
+//       no_telepon
+//       obat
+//       riwayat_alergi
+//       tanggal_pemeriksaan
+//       tindakan
+//     }
+//   }
+// `;
+
+const DeleteData = gql`
+  mutation MyMutation($_eq: Int!) {
+    delete_rekammedis_pasien(where: { id: { _eq: $_eq } }) {
+      affected_rows
+    }
+  }
+`;
+
 const Home = () => {
   const [datapasien, setDataPasien] = useState();
-  const { data: respond, refetch } = useQuery(getData);
+  const { data: respond, refetch } = useSubscription(getData);
+  const [deletepasien, { loading: respondloading }] = useMutation(DeleteData, {
+    refetchQueries: [getData],
+  });
+
   useEffect(() => {
     if (respond) {
       setDataPasien(respond?.rekammedis_pasien || []);
-    } else {
-      setDataPasien([]);
     }
   }, [respond]);
+
   return (
     <div className="datapasien">
       <Sidebar />
@@ -72,33 +117,44 @@ const Home = () => {
             >
               <TableHead>
                 <TableRow>
-                  <TableCell className="tableCell">ID Pasien</TableCell>
-                  <TableCell className="tableCell">Nama Pasien</TableCell>
                   <TableCell className="tableCell">
-                    Tanggal Pemeriksaaan
+                    <AccountBoxOutlinedIcon className="icon" />
+                    No Rekam Medis
                   </TableCell>
-                  <TableCell className="tableCell">No Telepon</TableCell>
-                  <TableCell className="tableCell">Alamat</TableCell>
-                  <TableCell className="tableCell">Diagnosa</TableCell>
-                  <TableCell className="tableCell">Tindakan</TableCell>
+                  <TableCell className="tableCell">
+                    <BadgeOutlinedIcon className="icon" />
+                    Nama Pasien
+                  </TableCell>
+                  <TableCell className="tableCell">
+                    <DateRangeIcon className="icon" />
+                    Jenis Kelamin
+                  </TableCell>
+                  <TableCell className="tableCell">
+                    <ContactPhoneOutlinedIcon className="icon" />
+                    Hasil Pemeriksaan
+                  </TableCell>
+                  <TableCell className="tableCell">
+                    <ReportOutlinedIcon className="icon" />
+                    Tindakan
+                  </TableCell>
                   <TableCell className="tableCell">Action</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {datapasien?.map((row) => (
                   <TableRow key={row.id}>
-                    <TableCell className="tableCell">{row.id}</TableCell>
+                    <TableCell className="tableCell">
+                      {row.no_rekammedis}
+                    </TableCell>
                     <TableCell className="tableCell">
                       {row.nama_pasien}
                     </TableCell>
                     <TableCell className="tableCell">
-                      {row.tanggal_pemeriksaan}
+                      {row.jenis_kelamin}
                     </TableCell>
                     <TableCell className="tableCell">
-                      {row.no_telepon}
+                      {row.hasil_pemeriksaan}
                     </TableCell>
-                    <TableCell className="tableCell">{row.alamat}</TableCell>
-                    <TableCell className="tableCell">{row.diagnosa}</TableCell>
                     <TableCell className="tableCell">
                       <span className={`tindakan ${row.tindakan}`}>
                         {row.tindakan}
@@ -106,14 +162,27 @@ const Home = () => {
                     </TableCell>
                     <TableCell className="tableCell">
                       <div className="cellAction">
-                        <div className="tombolEdit">
-                          <SaveAsIcon />
-                        </div>
-                        <div className="tombolHapus">
+                        <Link to={`edit/${row.id}`}>
+                          <div className="tombolEdit">
+                            <SaveAsIcon />
+                          </div>
+                        </Link>
+                        <div
+                          className="tombolHapus"
+                          onClick={() => {
+                            deletepasien({
+                              variables: { _eq: row.id },
+                            });
+                          }}
+                        >
                           <DeleteForeverIcon />
                         </div>
                         <div className="tombolInfo">
-                          <AssignmentLateIcon />
+                          <Link to={`medis/${row.id}`}>
+                            <div className="tombolInfo">
+                              <AssignmentLateIcon />
+                            </div>
+                          </Link>
                         </div>
                       </div>
                     </TableCell>

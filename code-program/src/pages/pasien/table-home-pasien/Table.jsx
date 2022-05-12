@@ -14,17 +14,24 @@ import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
 import AccessibleOutlinedIcon from '@mui/icons-material/AccessibleOutlined';
 import ReportOutlinedIcon from '@mui/icons-material/ReportOutlined';
 import './table.scss';
-import { gql, useQuery, useMutation, setLogVerbosity } from '@apollo/client';
+import { gql, useQuery, useMutation, useSubscription } from '@apollo/client';
 import { useState } from 'react';
 
 const getData = gql`
-  query MyQuery {
+  subscription MySubscription {
     rekammedis_pasien {
       alamat
-      diagnosa
+      diagnosa_awal
+      diagnosa_sekunder
+      email
+      hasil_pemeriksaan
       id
+      jenis_kelamin
       nama_pasien
+      no_rekammedis
       no_telepon
+      obat
+      riwayat_alergi
       tanggal_pemeriksaan
       tindakan
     }
@@ -33,7 +40,7 @@ const getData = gql`
 
 const List = () => {
   const [datapasien, setDataPasien] = useState();
-  const { data: respond, refetch } = useQuery(getData);
+  const { data: respond, refetch } = useSubscription(getData);
   useEffect(() => {
     if (respond) {
       setDataPasien(respond?.rekammedis_pasien || []);
@@ -54,7 +61,7 @@ const List = () => {
           <TableRow>
             <TableCell className="tableCell">
               <AccountBoxOutlinedIcon className="icon" />
-              ID Pasien
+              No Rekam Medis
             </TableCell>
             <TableCell className="tableCell">
               <BadgeOutlinedIcon className="icon" />
@@ -62,19 +69,11 @@ const List = () => {
             </TableCell>
             <TableCell className="tableCell">
               <DateRangeIcon className="icon" />
-              Tanggal Pemeriksaaan
+              Jenis Kelamin
             </TableCell>
             <TableCell className="tableCell">
               <ContactPhoneOutlinedIcon className="icon" />
-              No Telepon
-            </TableCell>
-            <TableCell className="tableCell">
-              <MapsHomeWorkOutlinedIcon className="icon" />
-              Alamat
-            </TableCell>
-            <TableCell className="tableCell">
-              <AccessibleOutlinedIcon className="icon" />
-              Diagnosa
+              Hasil Pemeriksaan
             </TableCell>
             <TableCell className="tableCell">
               <ReportOutlinedIcon className="icon" />
@@ -85,14 +84,12 @@ const List = () => {
         <TableBody>
           {datapasien?.map((row) => (
             <TableRow key={row.id}>
-              <TableCell className="tableCell">{row.id}</TableCell>
+              <TableCell className="tableCell">{row.no_rekammedis}</TableCell>
               <TableCell className="tableCell">{row.nama_pasien}</TableCell>
+              <TableCell className="tableCell">{row.jenis_kelamin}</TableCell>
               <TableCell className="tableCell">
-                {row.tanggal_pemeriksaan}
+                {row.hasil_pemeriksaan}
               </TableCell>
-              <TableCell className="tableCell">{row.no_telepon}</TableCell>
-              <TableCell className="tableCell">{row.alamat}</TableCell>
-              <TableCell className="tableCell">{row.diagnosa}</TableCell>
               <TableCell className="tableCell">
                 <span className={`tindakan ${row.tindakan}`}>
                   {row.tindakan}
