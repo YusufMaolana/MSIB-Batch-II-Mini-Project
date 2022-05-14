@@ -27,53 +27,57 @@ const Hitung = gql`
 `;
 const Home = () => {
   const [a, sa] = useState();
-  const { data } = useSubscription(Hitung);
+  const { data, loading } = useSubscription(Hitung);
   useEffect(() => {
     if (data) {
       sa(data?.rekammedis_pasien_aggregate.aggregate.count || '');
     }
   }, [data]);
   console.log(a);
-  return (
-    <div className="home">
-      <Sidebar />
-      <div className="homeContainer">
-        <Navbar />
-        <div className="titleTop">Dasboard</div>
-        <div className="widgets">
-          <div className="right">
-            <Link to="/pasien" style={{ textDecoration: 'none' }}>
-              <AccessibleOutlinedIcon className="icon" />
-            </Link>
-            <div className="titleicon">
-              <p className="pasien">Pasien</p>
-              <p className="count">{a}</p>
+  if (loading) {
+    return <p>loading</p>;
+  } else if (data) {
+    return (
+      <div className="home">
+        <Sidebar />
+        <div className="homeContainer">
+          <Navbar />
+          <div className="titleTop">Dasboard</div>
+          <div className="widgets">
+            <div className="right">
+              <Link to="/pasien" style={{ textDecoration: 'none' }}>
+                <AccessibleOutlinedIcon className="icon" />
+              </Link>
+              <div className="titleicon">
+                <p className="pasien">Pasien</p>
+                <p className="count">{a}</p>
+              </div>
+            </div>
+            <div className="left">
+              <Link to="/dokter" style={{ textDecoration: 'none' }}>
+                <GroupsOutlinedIcon className="icon" />
+              </Link>
+              <div className="titleicon">
+                <p className="dokter">Dokter</p>
+                <p className="count">10</p>
+              </div>
             </div>
           </div>
-          <div className="left">
-            <Link to="/dokter" style={{ textDecoration: 'none' }}>
-              <GroupsOutlinedIcon className="icon" />
-            </Link>
-            <div className="titleicon">
-              <p className="dokter">Dokter</p>
-              <p className="count">10</p>
+          <div className="listContainer">
+            <div className="search">
+              <input type="text" placeholder="Search..." />
+              <TravelExploreIcon className="icon" />
             </div>
+            <Table />
           </div>
-        </div>
-        <div className="listContainer">
-          <div className="search">
-            <input type="text" placeholder="Search..." />
-            <TravelExploreIcon className="icon" />
+          <div className="information">
+            <Calendar className="calendar" />
+            <ReactClock className="clock" />
           </div>
-          <Table />
-        </div>
-        <div className="information">
-          <Calendar className="calendar" />
-          <ReactClock className="clock" />
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default Home;

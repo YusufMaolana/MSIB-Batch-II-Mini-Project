@@ -48,7 +48,6 @@ const List = () => {
     }
   }, [respond]);
 
-  console.log(datapasien);
   return (
     <TableContainer component={Paper} className="table">
       <Table

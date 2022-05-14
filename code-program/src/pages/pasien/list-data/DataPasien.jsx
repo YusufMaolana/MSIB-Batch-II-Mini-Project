@@ -22,6 +22,7 @@ import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import { gql, useMutation, useSubscription } from '@apollo/client';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { filterPasien } from '../../../filterPasien';
 
 const getData = gql`
   subscription MySubscription {
@@ -54,7 +55,8 @@ const DeleteData = gql`
 
 const Home = () => {
   const [datapasien, setDataPasien] = useState();
-  const { data: respond, refetch } = useSubscription(getData);
+  const { data: respond, loading: loadingdatapasien } =
+    useSubscription(getData);
   const [deletepasien, { loading: respondloading }] = useMutation(DeleteData, {
     refetchQueries: [getData],
   });
@@ -67,133 +69,140 @@ const Home = () => {
 
   // Search Data
 
-  // const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState('');
 
-  // const [dataFilterPasien, SetFilterPasien] = useState([]);
+  const [dataFilterPasien, SetFilterPasien] = useState([]);
 
-  // const handleChange = (e) => {
-  //   setSearchInput(e.target.value);
-  // };
+  const handleChange = (e) => {
+    setSearchInput(e.target.value);
+  };
 
-  // const handleClick = () => {
-  //   SetFilterPasien(
-  //     filterPasien({
-  //       dataPasien: data,
-  //       searchInput: searchInput,
-  //       toTable: true,
-  //     })
-  //   );
-  // };
+  const handleClick = () => {
+    SetFilterPasien(
+      filterPasien({
+        dataPasien: datapasien || [],
+        searchInput: searchInput || ' ',
+      })
+    );
+  };
 
-  // useEffect(() => {
-  //   handleClick();
-  // }, [data, searchInput]);
+  useEffect(() => {
+    handleClick();
+  }, [datapasien, searchInput]);
 
-  return (
-    <div className="datapasien">
-      <Sidebar />
-      <div className="datapasienContainer">
-        <Navbar />
-        <div className="titleTop">Pasien Data</div>
-        <div className="titleTable">
-          <Link to="/pasien/new" style={{ textDecoration: 'none' }}>
-            <div className="btndata">+ New Data</div>
-          </Link>
-        </div>
-        <div className="listContainer">
-          <div className="search">
-            <input type="text" placeholder="Search..." />
-            <TravelExploreIcon className="icon" />
+  if (loadingdatapasien) {
+    return <p>loading</p>;
+  } else if (respond) {
+    return (
+      <div className="datapasien">
+        <Sidebar />
+        <div className="datapasienContainer">
+          <Navbar />
+          <div className="titleTop">Pasien Data</div>
+          <div className="titleTable">
+            <Link to="/pasien/new" style={{ textDecoration: 'none' }}>
+              <div className="btndata">+ New Data</div>
+            </Link>
           </div>
-          <TableContainer component={Paper} className="table">
-            <Table
-              sx={{ minWidth: 650 }}
-              aria-label="simple table"
-              className="tablechild"
-            >
-              <TableHead>
-                <TableRow>
-                  <TableCell className="tableCell">
-                    <BadgeIcon className="icon" />
-                    No Rekam Medis
-                  </TableCell>
-                  <TableCell className="tableCell">
-                    <AccountCircleIcon className="icon" />
-                    Nama Pasien
-                  </TableCell>
-                  <TableCell className="tableCell">
-                    <WcIcon className="icon" />
-                    Jenis Kelamin
-                  </TableCell>
-                  <TableCell className="tableCell">
-                    <AssignmentIcon className="icon" />
-                    Hasil Pemeriksaan
-                  </TableCell>
-                  <TableCell className="tableCell">
-                    <ReportIcon className="icon" />
-                    Tindakan
-                  </TableCell>
-                  <TableCell className="tableCell">
-                    <SettingsIcon className="icon" />
-                    Action
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {datapasien?.map((row) => (
-                  <TableRow key={row.id}>
+          <div className="listContainer">
+            <div className="search">
+              <input
+                type="text"
+                placeholder="Search..."
+                onChange={handleChange}
+              />
+              <TravelExploreIcon className="icon" onClick={handleClick} />
+            </div>
+            <TableContainer component={Paper} className="table">
+              <Table
+                sx={{ minWidth: 650 }}
+                aria-label="simple table"
+                className="tablechild"
+              >
+                <TableHead>
+                  <TableRow>
                     <TableCell className="tableCell">
-                      {row.no_rekammedis}
+                      <BadgeIcon className="icon" />
+                      No Rekam Medis
                     </TableCell>
                     <TableCell className="tableCell">
-                      {row.nama_pasien}
+                      <AccountCircleIcon className="icon" />
+                      Nama Pasien
                     </TableCell>
                     <TableCell className="tableCell">
-                      {row.jenis_kelamin}
+                      <WcIcon className="icon" />
+                      Jenis Kelamin
                     </TableCell>
                     <TableCell className="tableCell">
-                      {row.hasil_pemeriksaan}
+                      <AssignmentIcon className="icon" />
+                      Hasil Pemeriksaan
                     </TableCell>
                     <TableCell className="tableCell">
-                      <span className={`tindakan ${row.tindakan}`}>
-                        {row.tindakan}
-                      </span>
+                      <ReportIcon className="icon" />
+                      Tindakan
                     </TableCell>
                     <TableCell className="tableCell">
-                      <div className="cellAction">
-                        <Link to={`edit/${row.id}`}>
-                          <div className="tombolEdit">
-                            <SaveAsIcon />
-                          </div>
-                        </Link>
-                        <div
-                          className="tombolHapus"
-                          onClick={() => {
-                            deletepasien({
-                              variables: { _eq: row.id },
-                            });
-                          }}
-                        >
-                          <DeleteForeverIcon />
-                        </div>
-                        <div className="tombolInfo">
-                          <Link to={`medis/${row.id}`}>
-                            <div className="tombolInfo">
-                              <AssignmentLateIcon />
-                            </div>
-                          </Link>
-                        </div>
-                      </div>
+                      <SettingsIcon className="icon" />
+                      Action
                     </TableCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                </TableHead>
+                <TableBody>
+                  {dataFilterPasien?.map((row) => (
+                    <TableRow key={row.id}>
+                      <TableCell className="tableCell">
+                        {row.no_rekammedis}
+                      </TableCell>
+                      <TableCell className="tableCell">
+                        {row.nama_pasien}
+                      </TableCell>
+                      <TableCell className="tableCell">
+                        {row.jenis_kelamin}
+                      </TableCell>
+                      <TableCell className="tableCell">
+                        {row.hasil_pemeriksaan}
+                      </TableCell>
+                      <TableCell className="tableCell">
+                        <span className={`tindakan ${row.tindakan}`}>
+                          {row.tindakan}
+                        </span>
+                      </TableCell>
+                      <TableCell className="tableCell">
+                        <div className="cellAction">
+                          <Link to={`edit/${row.id}`}>
+                            <div className="tombolEdit">
+                              <SaveAsIcon />
+                            </div>
+                          </Link>
+                          <div
+                            className="tombolHapus"
+                            onClick={() => {
+                              deletepasien({
+                                variables: { _eq: row.id },
+                              });
+                            }}
+                          >
+                            <DeleteForeverIcon />
+                          </div>
+                          <div className="tombolInfo">
+                            <Link to={`medis/${row.id}`}>
+                              <div className="tombolInfo">
+                                <AssignmentLateIcon />
+                              </div>
+                            </Link>
+                          </div>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default Home;
