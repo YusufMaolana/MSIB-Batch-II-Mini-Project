@@ -11,59 +11,59 @@ import Paper from '@mui/material/Paper';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import BadgeIcon from '@mui/icons-material/Badge';
-import AssignmentIcon from '@mui/icons-material/Assignment';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import WcIcon from '@mui/icons-material/Wc';
 import ReportIcon from '@mui/icons-material/Report';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import AssignmentLateIcon from '@mui/icons-material/AssignmentLate';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
-import './datapasien.scss';
+import './datadokter.scss';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import { gql, useMutation, useSubscription } from '@apollo/client';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const getData = gql`
-  subscription MySubscription {
-    rekammedis_pasien {
-      alamat
-      diagnosa_awal
-      diagnosa_sekunder
-      email
-      hasil_pemeriksaan
-      id
-      jenis_kelamin
-      nama_pasien
-      no_rekammedis
-      no_telepon
-      obat
-      riwayat_alergi
-      tanggal_pemeriksaan
-      tindakan
-    }
-  }
-`;
+// const getData = gql`
+//   subscription MySubscription {
+//     rekammedis_pasien {
+//       alamat
+//       diagnosa_awal
+//       diagnosa_sekunder
+//       email
+//       hasil_pemeriksaan
+//       id
+//       jenis_kelamin
+//       nama_pasien
+//       no_rekammedis
+//       no_telepon
+//       obat
+//       riwayat_alergi
+//       tanggal_pemeriksaan
+//       tindakan
+//     }
+//   }
+// `;
 
-const DeleteData = gql`
-  mutation MyMutation($_eq: Int!) {
-    delete_rekammedis_pasien(where: { id: { _eq: $_eq } }) {
-      affected_rows
-    }
-  }
-`;
+// const DeleteData = gql`
+//   mutation MyMutation($_eq: Int!) {
+//     delete_rekammedis_pasien(where: { id: { _eq: $_eq } }) {
+//       affected_rows
+//     }
+//   }
+// `;
 
-const Home = () => {
+const Dokter = () => {
   const [datapasien, setDataPasien] = useState();
-  const { data: respond, refetch } = useSubscription(getData);
-  const [deletepasien, { loading: respondloading }] = useMutation(DeleteData, {
-    refetchQueries: [getData],
-  });
+  // const { data: respond, refetch } = useSubscription(getData);
+  // const [deletepasien, { loading: respondloading }] = useMutation(DeleteData, {
+  //   refetchQueries: [getData],
+  // });
 
-  useEffect(() => {
-    if (respond) {
-      setDataPasien(respond?.rekammedis_pasien || []);
-    }
-  }, [respond]);
+  // useEffect(() => {
+  //   if (respond) {
+  //     setDataPasien(respond?.rekammedis_pasien || []);
+  //   }
+  // }, [respond]);
 
   // Search Data
 
@@ -90,13 +90,13 @@ const Home = () => {
   // }, [data, searchInput]);
 
   return (
-    <div className="datapasien">
+    <div className="datadokter">
       <Sidebar />
-      <div className="datapasienContainer">
+      <div className="datadokterContainer">
         <Navbar />
-        <div className="titleTop">Pasien Data</div>
-        <div className="titleTable">
-          <Link to="/pasien/new" style={{ textDecoration: 'none' }}>
+        <div className="titleTopDokter">Dokter Data</div>
+        <div className="titleTableDokter">
+          <Link to="/dokter/new" style={{ textDecoration: 'none' }}>
             <div className="btndata">+ New Data</div>
           </Link>
         </div>
@@ -115,23 +115,23 @@ const Home = () => {
                 <TableRow>
                   <TableCell className="tableCell">
                     <BadgeIcon className="icon" />
-                    No Rekam Medis
+                    No Induk Pegawai
                   </TableCell>
                   <TableCell className="tableCell">
                     <AccountCircleIcon className="icon" />
-                    Nama Pasien
+                    Nama Dokter
                   </TableCell>
                   <TableCell className="tableCell">
                     <WcIcon className="icon" />
                     Jenis Kelamin
                   </TableCell>
                   <TableCell className="tableCell">
-                    <AssignmentIcon className="icon" />
-                    Hasil Pemeriksaan
+                    <LibraryBooksIcon className="icon" />
+                    Pendidikan Terakhir
                   </TableCell>
                   <TableCell className="tableCell">
                     <ReportIcon className="icon" />
-                    Tindakan
+                    Status
                   </TableCell>
                   <TableCell className="tableCell">
                     <SettingsIcon className="icon" />
@@ -169,9 +169,9 @@ const Home = () => {
                         <div
                           className="tombolHapus"
                           onClick={() => {
-                            deletepasien({
-                              variables: { _eq: row.id },
-                            });
+                            // deletepasien({
+                            //   variables: { _eq: row.id },
+                            // });
                           }}
                         >
                           <DeleteForeverIcon />
@@ -196,4 +196,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Dokter;

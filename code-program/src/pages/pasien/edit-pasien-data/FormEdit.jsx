@@ -3,13 +3,7 @@ import Sidebar from '../../../components/sidebar/Sidebar';
 import React from 'react';
 import './formedit.scss';
 import { useParams } from 'react-router-dom';
-import {
-  gql,
-  useQuery,
-  useMutation,
-  setLogVerbosity,
-  useSubscription,
-} from '@apollo/client';
+import { gql, useQuery, useMutation } from '@apollo/client';
 import { useState, useEffect } from 'react';
 
 const editData = gql`
@@ -258,8 +252,8 @@ const FormEdit = () => {
               />
             </div>
           </form>
-          <button className="btnKirim" onClick={handleonSumbit}>
-            Kirim
+          <button className="btnSave" onClick={handleonSumbit}>
+            Save
           </button>
         </div>
       </div>

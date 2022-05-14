@@ -11,9 +11,9 @@
       font-weight: bold;
       color: rgba(128, 128, 128, 0.26);
     }
-    .titleForm {
+    .titleFormInput {
       border-style: outset;
-      background-color: #4d44b5b7;
+      background-color: black;
       border-radius: 10px;
       box-shadow: -3px 11px 84px -21px rgba(0, 0, 0, 0.68);
       -webkit-box-shadow: -3px 11px 84px -21px rgba(0, 0, 0, 0.68);
@@ -50,23 +50,23 @@
       .forminput {
         width: 370px;
 
-        input {
+        .inputPasein {
           display: flex;
           width: 100%;
           height: 25px;
           padding: 5px;
-          background-color: rgba(255, 255, 255, 0.219);
-          border-color: rgba(128, 128, 128, 0.377);
+          background-color: rgba(128, 128, 128, 0.568);
+          border-color: rgba(128, 128, 128, 0.849);
           border-radius: 5px;
         }
 
-        label {
+        .inputLabel {
           gap: 10px;
           display: flex;
           margin-bottom: 10px;
           align-items: center;
           font-weight: bold;
-          color: #3d368a;
+          color: red;
 
           .icon {
             cursor: pointer;
@@ -74,10 +74,11 @@
         }
       }
     }
-    .btnKirim {
-      margin-left: 65%;
-      margin-top: 50px;
-      margin-bottom: 50px;
+
+    .btnKirimInput {
+      margin-top: 40px;
+      margin-left: 10%;
+      margin-bottom: 30px;
       width: 100px;
       height: 35px;
       margin-left: 13;
@@ -87,7 +88,7 @@
       background-color: #4d44b5;
       color: white;
     }
-    .btnReset {
+    .btnResetInput {
       margin-left: 10px;
       width: 100px;
       height: 35px;

@@ -6,13 +6,12 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import ContactPhoneOutlinedIcon from '@mui/icons-material/ContactPhoneOutlined';
-import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
-import DateRangeIcon from '@mui/icons-material/DateRange';
-import MapsHomeWorkOutlinedIcon from '@mui/icons-material/MapsHomeWorkOutlined';
-import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
-import AccessibleOutlinedIcon from '@mui/icons-material/AccessibleOutlined';
-import ReportOutlinedIcon from '@mui/icons-material/ReportOutlined';
+import SettingsIcon from '@mui/icons-material/Settings';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import BadgeIcon from '@mui/icons-material/Badge';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import WcIcon from '@mui/icons-material/Wc';
+import ReportIcon from '@mui/icons-material/Report';
 import './table.scss';
 import { gql, useQuery, useMutation, useSubscription } from '@apollo/client';
 import { useState } from 'react';
@@ -60,23 +59,23 @@ const List = () => {
         <TableHead>
           <TableRow>
             <TableCell className="tableCell">
-              <AccountBoxOutlinedIcon className="icon" />
+              <BadgeIcon className="icon" />
               No Rekam Medis
             </TableCell>
             <TableCell className="tableCell">
-              <BadgeOutlinedIcon className="icon" />
+              <AccountCircleIcon className="icon" />
               Nama Pasien
             </TableCell>
             <TableCell className="tableCell">
-              <DateRangeIcon className="icon" />
+              <WcIcon className="icon" />
               Jenis Kelamin
             </TableCell>
             <TableCell className="tableCell">
-              <ContactPhoneOutlinedIcon className="icon" />
+              <AssignmentIcon className="icon" />
               Hasil Pemeriksaan
             </TableCell>
             <TableCell className="tableCell">
-              <ReportOutlinedIcon className="icon" />
+              <ReportIcon className="icon" />
               Tindakan
             </TableCell>
           </TableRow>

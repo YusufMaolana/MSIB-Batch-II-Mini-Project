@@ -13,7 +13,7 @@
     }
     .titleForm {
       border-style: outset;
-      background-color: #4d44b5b7;
+      background-color: black;
       border-radius: 10px;
       box-shadow: -3px 11px 84px -21px rgba(0, 0, 0, 0.68);
       -webkit-box-shadow: -3px 11px 84px -21px rgba(0, 0, 0, 0.68);
@@ -66,7 +66,7 @@
           margin-bottom: 10px;
           align-items: center;
           font-weight: bold;
-          color: #3d368a;
+          color: red;
 
           .icon {
             cursor: pointer;
@@ -74,28 +74,17 @@
         }
       }
     }
-    .btnKirim {
-      margin-left: 65%;
-      margin-top: 50px;
-      margin-bottom: 50px;
+    .btnSave {
+      margin-left: 10%;
+      margin-top: 40px;
+      margin-bottom: 30px;
       width: 100px;
       height: 35px;
-      margin-left: 13;
       font-size: 13px;
       border: none;
       border-radius: 17px;
-      background-color: #4d44b5;
-      color: white;
-    }
-    .btnReset {
-      margin-left: 10px;
-      width: 100px;
-      height: 35px;
-      margin-right: 130px;
-      font-size: 13px;
-      border: none;
-      border-radius: 17px;
-      background-color: rgb(255, 46, 92);
+      background-color: rgb(4, 196, 4);
+      font-size: 14px;
       color: white;
     }
   }

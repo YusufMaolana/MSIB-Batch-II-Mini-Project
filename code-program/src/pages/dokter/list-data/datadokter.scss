@@ -1,18 +1,18 @@
-.datapasien {
+.datadokter {
   display: flex;
   background-color: whitesmoke;
 
-  .datapasienContainer {
+  .datadokterContainer {
     flex: 6;
-    .titleTop {
+    .titleTopDokter {
       margin-top: 10px;
       margin-left: 20px;
       font-size: 25px;
       font-weight: bold;
       color: rgba(128, 128, 128, 0.26);
     }
-    .titleTable {
-      background-color: #4d44b5;
+    .titleTableDokter {
+      background-color: #fb7d5b;
       text-align: center;
       border-style: outset;
       border-radius: 16px;
@@ -76,7 +76,7 @@
       }
       .tablechild {
         border-style: none;
-        background-color: #4d44b5ec;
+        background-color: #fb7d5b;
       }
       .tableCell {
         color: white;
@@ -91,19 +91,19 @@
         padding: 5px;
         border-radius: 5px;
 
-        &.Inpatient {
+        &.Absent {
           color: white;
           background-color: red;
         }
 
-        &.Outpatient {
+        &.Present {
           color: white;
           background-color: green;
         }
       }
       .icon {
         font-size: 18px;
-        color: #f56841;
+        color: #4d44b5;
       }
     }
 

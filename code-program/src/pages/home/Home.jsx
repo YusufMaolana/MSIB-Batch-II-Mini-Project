@@ -60,9 +60,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="titleTable">
-          <h1>Pasien Data</h1>
-        </div>
         <div className="listContainer">
           <div className="search">
             <input type="text" placeholder="Search..." />

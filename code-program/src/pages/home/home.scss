@@ -9,11 +9,11 @@
       margin-left: 20px;
       font-size: 25px;
       font-weight: bold;
-      color: grey;
+      color: rgba(128, 128, 128, 0.26);
     }
     .titleTable {
       border-style: outset;
-      background-color: #4d44b5b7;
+      background-color: black;
       border-radius: 10px;
       box-shadow: -3px 11px 84px -21px rgba(0, 0, 0, 0.68);
       -webkit-box-shadow: -3px 11px 84px -21px rgba(0, 0, 0, 0.68);
@@ -42,7 +42,7 @@
       .clock {
         border-style: outset;
         margin-left: 130px;
-        margin-top: 120px;
+        margin-top: 90px;
       }
     }
   }
