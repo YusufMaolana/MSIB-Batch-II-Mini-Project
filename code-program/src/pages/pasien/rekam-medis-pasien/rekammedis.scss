@@ -25,10 +25,8 @@
       margin-right: 20px;
       display: flex;
       color: white;
-      font-weight: bold;
       justify-content: center;
-      font-size: 12px;
-      font-weight: bold;
+      font-size: 25px;
     }
   }
   .formContainerrekammedis {
@@ -61,7 +59,7 @@
           background-color: rgba(255, 255, 255, 0.219);
           border-color: rgba(128, 128, 128, 0.377);
           border-radius: 5px;
-          font-size: 15px;
+          font-size: 16px;
         }
 
         label {
@@ -75,6 +73,34 @@
           .icon {
             cursor: pointer;
           }
+        }
+      }
+
+      .ttd {
+        width: 370px;
+
+        input {
+          margin-top: 35%;
+          margin-left: 40px;
+          border-style: none;
+          display: flex;
+          width: 100%;
+          height: 25px;
+          padding: 5px;
+          background-color: rgba(255, 255, 255, 0.219);
+          border-color: rgba(128, 128, 128, 0.377);
+          border-radius: 5px;
+          font-size: 16px;
+        }
+
+        label {
+          margin-left: 40px;
+          gap: 10px;
+          display: flex;
+          margin-top: 40%;
+          align-items: center;
+          font-weight: bold;
+          color: black;
         }
       }
     }

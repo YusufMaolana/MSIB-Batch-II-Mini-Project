@@ -17,6 +17,7 @@ import ReportIcon from '@mui/icons-material/Report';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import AssignmentLateIcon from '@mui/icons-material/AssignmentLate';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
+import Loading from '../../../components/loading-page/Loading';
 import './datapasien.scss';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import { gql, useMutation, useSubscription } from '@apollo/client';
@@ -91,7 +92,7 @@ const Home = () => {
   }, [datapasien, searchInput]);
 
   if (loadingdatapasien) {
-    return <p>loading</p>;
+    return <Loading />;
   } else if (respond) {
     return (
       <div className="datapasien">

@@ -24,6 +24,7 @@ const insertData = gql`
       riwayat_alergi
       tanggal_pemeriksaan
       tindakan
+      pemeriksa
     }
   }
 `;
@@ -63,9 +64,7 @@ const FormInput = () => {
       <div className="formeditContainer">
         <Navbar />
         <div className="titleTop">New Pasien Data</div>
-        <div className="titleFormInput">
-          <h1>Formulir Data Pasien</h1>
-        </div>
+        <div className="titleFormInput">Formulir Data Pasien</div>
         <div className="formContainer">
           <form>
             <div className="forminput">
@@ -211,6 +210,17 @@ const FormInput = () => {
                 placeholder="Inpatient/Outpatient"
                 onChange={handleonChange}
                 value={state.tindakan || ''}
+              />
+            </div>
+            <div className="forminput">
+              <label className="inputLabel">Dokter Pemeriksa *</label>
+              <input
+                className="inputPasien"
+                type="text"
+                name="pemeriksa"
+                placeholder="Nama Dokter"
+                onChange={handleonChange}
+                value={state.pemeriksa || ''}
               />
             </div>
           </form>

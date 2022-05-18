@@ -8,6 +8,7 @@ import './home.scss';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import Calendar from '../../components/widget/calendar/Calendar';
 import ReactClock from '../../components/widget/clock/ReactClock';
+import Loading from '../../components/loading-page/Loading';
 import { Link } from 'react-router-dom';
 import {
   gql,
@@ -35,7 +36,7 @@ const Home = () => {
   }, [data]);
   console.log(a);
   if (loading) {
-    return <p>loading</p>;
+    return <Loading />;
   } else if (data) {
     return (
       <div className="home">
@@ -49,8 +50,8 @@ const Home = () => {
                 <AccessibleOutlinedIcon className="icon" />
               </Link>
               <div className="titleicon">
-                <p className="pasien">Pasien</p>
-                <p className="count">{a}</p>
+                <div className="pasien">Pasien</div>
+                <div className="count">{a}</div>
               </div>
             </div>
             <div className="left">
@@ -58,16 +59,12 @@ const Home = () => {
                 <GroupsOutlinedIcon className="icon" />
               </Link>
               <div className="titleicon">
-                <p className="dokter">Dokter</p>
-                <p className="count">10</p>
+                <div className="dokter"> Dokter</div>
+                <div className="count">10</div>
               </div>
             </div>
           </div>
           <div className="listContainer">
-            <div className="search">
-              <input type="text" placeholder="Search..." />
-              <TravelExploreIcon className="icon" />
-            </div>
             <Table />
           </div>
           <div className="information">

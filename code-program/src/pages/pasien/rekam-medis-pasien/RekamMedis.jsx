@@ -24,6 +24,7 @@ const tampil = gql`
       riwayat_alergi
       tanggal_pemeriksaan
       tindakan
+      pemeriksa
     }
   }
 `;
@@ -57,13 +58,11 @@ const RekamMedis = () => {
       <div className="rekammedisContainer">
         <Navbar />
         <div className="titlerekammedis">Rekam Medis</div>
-        <div className="titleFormrekammedis">
-          <h1>Rekam Medis Pasien</h1>
-        </div>
+        <div className="titleFormrekammedis">Rekam Medis Pasien</div>
         <div className="formContainerrekammedis">
           <form>
             <div className="forminput">
-              <label>No Rekam Medis *</label>
+              <label>No Rekam Medis</label>
               <input
                 type="text"
                 placeholder="001-100"
@@ -72,7 +71,7 @@ const RekamMedis = () => {
               />
             </div>
             <div className="forminput">
-              <label>Nama Pasien *</label>
+              <label>Nama Pasien</label>
               <input
                 type="text"
                 placeholder="Nama Lengkap"
@@ -81,7 +80,7 @@ const RekamMedis = () => {
               />
             </div>
             <div className="forminput">
-              <label>Jenis Kelamin *</label>
+              <label>Jenis Kelamin</label>
               <input
                 type="text"
                 placeholder="Perempuan / Laki-Laki"
@@ -90,7 +89,7 @@ const RekamMedis = () => {
               />
             </div>
             <div className="forminput">
-              <label>Tanggal Pemeriksaan *</label>
+              <label>Tanggal Pemeriksaan</label>
               <input
                 type="date"
                 placeholder="MM-DD-YY"
@@ -99,7 +98,7 @@ const RekamMedis = () => {
               />
             </div>
             <div className="forminput">
-              <label>No Telepon *</label>
+              <label>No Telepon</label>
               <input
                 type="text"
                 name="no_telepon"
@@ -108,7 +107,7 @@ const RekamMedis = () => {
               />
             </div>
             <div className="forminput">
-              <label>Email *</label>
+              <label>Email</label>
               <input
                 type="text"
                 name="email"
@@ -117,7 +116,7 @@ const RekamMedis = () => {
               />
             </div>
             <div className="forminput">
-              <label>Alamat *</label>
+              <label>Alamat</label>
               <input
                 type="text"
                 name="alamat"
@@ -126,7 +125,7 @@ const RekamMedis = () => {
               />
             </div>
             <div className="forminput">
-              <label>Diagnosa Awal Pasien *</label>
+              <label>Diagnosa Awal Pasien</label>
               <input
                 type="text"
                 name="diagnosa_awal"
@@ -135,7 +134,7 @@ const RekamMedis = () => {
               />
             </div>
             <div className="forminput">
-              <label>Diagnosa Sekunder*</label>
+              <label>Diagnosa Sekunder</label>
               <input
                 type="text"
                 name="diagnosa_sekunder"
@@ -144,7 +143,7 @@ const RekamMedis = () => {
               />
             </div>
             <div className="forminput">
-              <label>Riwayat Alergi *</label>
+              <label>Riwayat Alergi</label>
               <input
                 type="text"
                 name="riwayat_alergi"
@@ -153,7 +152,7 @@ const RekamMedis = () => {
               />
             </div>
             <div className="forminput">
-              <label>Hasil Pemeriksaan *</label>
+              <label>Hasil Pemeriksaan</label>
               <input
                 type="text"
                 name="hasil_pemeriksaan"
@@ -162,7 +161,7 @@ const RekamMedis = () => {
               />
             </div>
             <div className="forminput">
-              <label>Terapi / Obat Yang Diberikan *</label>
+              <label>Terapi / Obat Yang Diberikan</label>
               <input
                 type="text"
                 name="obat"
@@ -171,13 +170,17 @@ const RekamMedis = () => {
               />
             </div>
             <div className="forminput">
-              <label>Tindakan *</label>
+              <label>Tindakan</label>
               <input
                 type="text"
                 name="tindakan"
                 placeholder="Inpatient/Outpatient"
                 value={a?.tindakan || ''}
               />
+            </div>
+            <div className="ttd">
+              <label>Dokter Penanggung Jawab </label>
+              <input type="text" name="pemeriksa" value={a?.pemeriksa || ''} />
             </div>
           </form>
         </div>

@@ -23,6 +23,7 @@ const editData = gql`
       riwayat_alergi
       tanggal_pemeriksaan
       tindakan
+      pemeriksa
     }
   }
 `;
@@ -46,6 +47,7 @@ const Update = gql`
         riwayat_alergi
         tanggal_pemeriksaan
         tindakan
+        pemeriksa
       }
     }
   }
@@ -98,6 +100,7 @@ const FormEdit = () => {
       hasil_pemeriksaan: a.hasil_pemeriksaan,
       obat: a.obat,
       tindakan: a.tindakan,
+      pemeriksa: a.pemeriksa,
     };
 
     console.log(newData, idx);
@@ -116,9 +119,7 @@ const FormEdit = () => {
       <div className="formeditContainer">
         <Navbar />
         <div className="titleTop">Edit Pasien Data</div>
-        <div className="titleForm">
-          <h1>Formulir Edit Pasien</h1>
-        </div>
+        <div className="titleForm">Formulir Edit Pasien</div>
         <div className="formContainer">
           <form>
             <div className="forminput">
@@ -251,9 +252,19 @@ const FormEdit = () => {
                 value={a?.tindakan || ''}
               />
             </div>
+            <div className="forminput">
+              <label>Dokter Pemeriksa *</label>
+              <input
+                type="text"
+                name="pemeriksa"
+                placeholder="Nama Dokter"
+                onChange={handleonChange}
+                value={a?.pemeriksa || ''}
+              />
+            </div>
           </form>
           <button className="btnSave" onClick={handleonSumbit}>
-            Save
+            Simpan
           </button>
         </div>
       </div>
