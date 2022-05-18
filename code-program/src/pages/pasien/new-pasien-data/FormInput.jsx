@@ -64,7 +64,6 @@ const FormInput = () => {
       <div className="formeditContainer">
         <Navbar />
         <div className="titleTop">New Pasien Data</div>
-        <div className="titleFormInput">Formulir Data Pasien</div>
         <div className="formContainer">
           <form>
             <div className="forminput">

@@ -12,6 +12,7 @@
       color: rgba(128, 128, 128, 0.26);
     }
     .titleFormrekammedis {
+      font-weight: bold;
       border-style: outset;
       background-color: black;
       border-radius: 10px;
@@ -80,8 +81,8 @@
         width: 370px;
 
         input {
-          margin-top: 35%;
-          margin-left: 40px;
+          margin-top: 29%;
+          margin-left: 40%;
           border-style: none;
           display: flex;
           width: 100%;
@@ -94,10 +95,10 @@
         }
 
         label {
-          margin-left: 40px;
+          margin-left: 40%;
           gap: 10px;
           display: flex;
-          margin-top: 40%;
+          margin-top: 50%;
           align-items: center;
           font-weight: bold;
           color: black;

@@ -4,9 +4,10 @@ import DataPasien from './pages/pasien/list-data/DataPasien';
 import FormInput from './pages/pasien/new-pasien-data/FormInput';
 import FormEdit from './pages/pasien/edit-pasien-data/FormEdit';
 import RekamMedis from './pages/pasien/rekam-medis-pasien/RekamMedis';
-import DataDokter from './pages/dokter/list-data/DataDokter';
-import FormDokter from './pages/dokter/new-pasien-data/FormDokter';
-
+import Dokter from './pages/dokter/list-data/Dokter';
+import FormDokter from './pages/dokter/new-dokter-data/FormDokter';
+import EditDokter from './pages/dokter/edit-dokter-data/EditDokter';
+import Information from './pages/dokter/dokter-information/Information';
 function App() {
   return (
     <div className="App">
@@ -21,8 +22,10 @@ function App() {
               <Route path="medis/:id" element={<RekamMedis />} />
             </Route>
             <Route path="dokter">
-              <Route index element={<DataDokter />} />
+              <Route index element={<Dokter />} />
               <Route path="new" element={<FormDokter />} />
+              <Route path="edit/:id" element={<EditDokter />} />
+              <Route path="info/:id" element={<Information />} />
             </Route>
           </Route>
         </Routes>

@@ -67,7 +67,7 @@ const Home = () => {
           <div className="listContainer">
             <Table />
           </div>
-          <div className="information">
+          <div className="widgetsbawah">
             <Calendar className="calendar" />
             <ReactClock className="clock" />
           </div>

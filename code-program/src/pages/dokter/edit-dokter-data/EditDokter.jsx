@@ -1,53 +1,47 @@
 import Navbar from '../../../components/navbar/Navbar';
 import Sidebar from '../../../components/sidebar/Sidebar';
 import React from 'react';
-import './formedit.scss';
+import './editdokter.scss';
 import { useParams } from 'react-router-dom';
 import { gql, useQuery, useMutation } from '@apollo/client';
 import { useState, useEffect } from 'react';
 
 const editData = gql`
   query MyQuery($id: Int!) {
-    rekammedis_pasien_by_pk(id: $id) {
+    rekammedis_dokter_by_pk(id: $id) {
       alamat
-      diagnosa_awal
-      diagnosa_sekunder
       email
-      hasil_pemeriksaan
       id
       jenis_kelamin
-      nama_pasien
-      no_rekammedis
+      nama_dokter
+      no_induk
       no_telepon
-      obat
-      riwayat_alergi
-      tanggal_pemeriksaan
-      tindakan
-      pemeriksa
+      pendidikan_pertama
+      pendidikan_lanjutan
+      status
+      tanggal_bergabung
+      gelar
     }
   }
 `;
 
 const Update = gql`
-  mutation MyMutation($_eq: Int!, $_set: rekammedis_pasien_set_input!) {
-    update_rekammedis_pasien(where: { id: { _eq: $_eq } }, _set: $_set) {
+  mutation MyMutation($_eq: Int!, $_set: rekammedis_dokter_set_input!) {
+    update_rekammedis_dokter(where: { id: { _eq: $_eq } }, _set: $_set) {
       affected_rows
       returning {
         alamat
-        diagnosa_awal
-        diagnosa_sekunder
         email
-        hasil_pemeriksaan
         id
         jenis_kelamin
-        nama_pasien
-        no_rekammedis
+        nama_dokter
+        no_induk
         no_telepon
-        obat
-        riwayat_alergi
-        tanggal_pemeriksaan
-        tindakan
-        pemeriksa
+        pendidikan_pertama
+        pendidikan_lanjutan
+        status
+        tanggal_bergabung
+        gelar
       }
     }
   }
@@ -70,7 +64,7 @@ const FormEdit = () => {
 
   useEffect(() => {
     if (respondedit) {
-      sa(respondedit.rekammedis_pasien_by_pk || []);
+      sa(respondedit.rekammedis_dokter_by_pk || []);
     }
   }, [respondedit]);
 
@@ -80,31 +74,30 @@ const FormEdit = () => {
     sa({ ...a, [e.target.name]: e.target.value });
   };
 
-  const [updatepasienlama, { data: da, loading: la, error: erra }] =
+  const [updatedokterlama, { data: da, loading: la, error: erra }] =
     useMutation(Update);
 
   const handleonSumbit = async (e) => {
     e.preventDefault();
     const idx = await a?.id;
     const newData = {
-      nama_pasien: a.nama_pasien,
-      no_rekammedis: a.no_rekammedis,
+      nama_dokter: a.nama_dokter,
+      no_induk: a.no_induk,
       jenis_kelamin: a.jenis_kelamin,
-      tanggal_pemeriksaan: a.tanggal_pemeriksaan,
+      tanggal_bergabung: a.tanggal_bergabung,
       no_telepon: a.no_telepon,
       email: a.email,
       alamat: a.alamat,
-      diagnosa_awal: a.diagnosa_awal,
-      diagnosa_sekunder: a.diagnosa_sekunder,
-      riwayat_alergi: a.riwayat_alergi,
+      pendidikan_pertama: a.pendidikan_pertama,
+      pendidikan_lanjutan: a.pendidikan_lanjutan,
+      tanggal_bergabung: a.tanggal_bergabung,
       hasil_pemeriksaan: a.hasil_pemeriksaan,
-      obat: a.obat,
-      tindakan: a.tindakan,
-      pemeriksa: a.pemeriksa,
+      gelar: a.gelar,
+      status: a.status,
     };
 
     console.log(newData, idx);
-    await updatepasienlama({
+    await updatedokterlama({
       variables: {
         _eq: idx,
         _set: newData,
@@ -122,143 +115,126 @@ const FormEdit = () => {
         <div className="formContainer">
           <form>
             <div className="forminput">
-              <label>No Rekam Medis *</label>
+              <label className="inputLabel">No Induk Pegawai *</label>
               <input
+                className="inputDokter"
                 type="text"
                 placeholder="001-100"
-                name="no_rekammedis"
+                name="no_induk"
                 onChange={handleonChange}
-                value={a?.no_rekammedis || ''}
+                value={a?.no_induk || ''}
               />
             </div>
             <div className="forminput">
-              <label>Nama Pasien *</label>
+              <label className="inputLabel">Nama Dokter *</label>
               <input
+                className="inputDokter"
                 type="text"
-                placeholder="Nama Lengkap"
-                name="nama_pasien"
-                value={a?.nama_pasien || ''}
+                placeholder="Nama Lengkap Beserta Gelar"
+                name="nama_dokter"
                 onChange={handleonChange}
+                value={a?.nama_dokter || ''}
               />
             </div>
             <div className="forminput">
-              <label>Jenis Kelamin *</label>
+              <label className="inputLabel">Jenis Kelamin *</label>
               <input
+                className="inputDokter"
                 type="text"
                 placeholder="Perempuan / Laki-Laki"
                 name="jenis_kelamin"
-                value={a?.jenis_kelamin || ''}
                 onChange={handleonChange}
+                value={a?.jenis_kelamin || ''}
               />
             </div>
             <div className="forminput">
-              <label>Tanggal Pemeriksaan *</label>
+              <label className="inputLabel">Tanggal Bergabung *</label>
               <input
+                className="inputDokter"
                 type="date"
                 placeholder="MM-DD-YY"
-                name="tanggal_pemeriksaan"
-                value={a?.tanggal_pemeriksaan || ''}
+                name="tanggal_bergabung"
                 onChange={handleonChange}
+                value={a?.tanggal_bergabung || ''}
               />
             </div>
             <div className="forminput">
-              <label>No Telepon *</label>
+              <label className="inputLabel">No Telepon *</label>
               <input
+                className="inputDokter"
                 type="text"
                 name="no_telepon"
                 placeholder="+62-xxx-xxx-xx"
-                value={a?.no_telepon || ''}
                 onChange={handleonChange}
+                value={a?.no_telepon || ''}
               />
             </div>
             <div className="forminput">
-              <label>Email *</label>
+              <label className="inputLabel">Email *</label>
               <input
+                className="inputDokter"
                 type="text"
                 name="email"
                 placeholder="example@gmail.com"
-                value={a?.email || ''}
                 onChange={handleonChange}
+                value={a?.email || ''}
               />
             </div>
             <div className="forminput">
-              <label>Alamat *</label>
+              <label className="inputLabel">Alamat *</label>
               <input
+                className="inputDokter"
                 type="text"
                 name="alamat"
                 placeholder="Jl.xxx No.xx /Rtxx.Rw.xx"
+                onChange={handleonChange}
                 value={a?.alamat || ''}
-                onChange={handleonChange}
               />
             </div>
             <div className="forminput">
-              <label>Diagnosa Awal Pasien *</label>
+              <label className="inputLabel">Riwayat Pendidikan Pertama *</label>
               <input
+                className="inputDokter"
                 type="text"
-                name="diagnosa_awal"
-                placeholder="Diagnosa Penyakit Awal"
-                value={a?.diagnosa_awal || ''}
+                name="pendidikan_pertama"
+                placeholder="Riwayat Pendidikan Pertama"
                 onChange={handleonChange}
+                value={a?.pendidikan_pertama || ''}
               />
             </div>
             <div className="forminput">
-              <label>Diagnosa Sekunder*</label>
+              <label className="inputLabel">
+                Riwayat Pendidikan Lanjutan *
+              </label>
               <input
+                className="inputDokter"
                 type="text"
-                name="diagnosa_sekunder"
-                placeholder="Diagnosa Penyakit Lanjutan"
+                name="pendidikan_lanjutan"
+                placeholder="Riwayat Pendidikan Lanjutan"
                 onChange={handleonChange}
-                value={a?.diagnosa_sekunder || ''}
+                value={a?.pendidikan_lanjutan || ''}
               />
             </div>
             <div className="forminput">
-              <label>Riwayat Alergi *</label>
+              <label className="inputLabel">Gelar Kedokteran *</label>
               <input
+                className="inputDokter"
                 type="text"
-                name="riwayat_alergi"
-                placeholder="Alergi Yang Diderita"
+                name="gelar"
+                placeholder="Gelar Kedokteran"
                 onChange={handleonChange}
-                value={a?.riwayat_alergi || ''}
+                value={a?.gelar || ''}
               />
             </div>
             <div className="forminput">
-              <label>Hasil Pemeriksaan *</label>
+              <label className="inputLabel">Status *</label>
               <input
+                className="inputDokter"
                 type="text"
-                name="hasil_pemeriksaan"
-                placeholder="Hasil Pemeriksaan Akhir"
+                name="status"
+                placeholder="Present/Absent"
                 onChange={handleonChange}
-                value={a?.hasil_pemeriksaan || ''}
-              />
-            </div>
-            <div className="forminput">
-              <label>Terapi / Obat Yang Diberikan *</label>
-              <input
-                type="text"
-                name="obat"
-                placeholder="Obat Yang Diberikan"
-                onChange={handleonChange}
-                value={a?.obat || ''}
-              />
-            </div>
-            <div className="forminput">
-              <label>Tindakan *</label>
-              <input
-                type="text"
-                name="tindakan"
-                placeholder="Inpatient/Outpatient"
-                onChange={handleonChange}
-                value={a?.tindakan || ''}
-              />
-            </div>
-            <div className="forminput">
-              <label>Dokter Pemeriksa *</label>
-              <input
-                type="text"
-                name="pemeriksa"
-                placeholder="Nama Dokter"
-                onChange={handleonChange}
-                value={a?.pemeriksa || ''}
+                value={a?.status || ''}
               />
             </div>
           </form>

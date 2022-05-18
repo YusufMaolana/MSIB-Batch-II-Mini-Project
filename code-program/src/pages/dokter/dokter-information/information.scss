@@ -1,37 +1,18 @@
-.rekammedis {
+.information {
   display: flex;
   background-color: whitesmoke;
 
-  .rekammedisContainer {
+  .informationContainer {
     flex: 6;
-    .titlerekammedis {
+    .titleinformation {
       margin-top: 10px;
       margin-left: 20px;
       font-size: 25px;
       font-weight: bold;
       color: rgba(128, 128, 128, 0.26);
     }
-    .titleFormrekammedis {
-      border-style: outset;
-      background-color: black;
-      border-radius: 10px;
-      box-shadow: -3px 11px 84px -21px rgba(0, 0, 0, 0.68);
-      -webkit-box-shadow: -3px 11px 84px -21px rgba(0, 0, 0, 0.68);
-      -moz-box-shadow: -3px 11px 84px -21px rgba(0, 0, 0, 0.68);
-      padding: 5px;
-      margin-left: 20px;
-      margin-top: 20px;
-      margin-bottom: 15px;
-      margin-right: 20px;
-      display: flex;
-      color: white;
-      font-weight: bold;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: bold;
-    }
   }
-  .formContainerrekammedis {
+  .formContainerinformation {
     border-style: outset;
     border-radius: 10px;
     box-shadow: 0px 17px 28px 1px rgba(0, 0, 0, 0.53);
@@ -61,7 +42,7 @@
           background-color: rgba(255, 255, 255, 0.219);
           border-color: rgba(128, 128, 128, 0.377);
           border-radius: 5px;
-          font-size: 15px;
+          font-size: 16px;
         }
 
         label {
@@ -75,6 +56,29 @@
           .icon {
             cursor: pointer;
           }
+        }
+      }
+
+      .ttd {
+        width: 370px;
+
+        .atas {
+          margin-left: 40%;
+          gap: 10px;
+          display: flex;
+          margin-top: 25%;
+          align-items: center;
+          font-weight: bold;
+          color: black;
+        }
+        .bawah {
+          margin-left: 40%;
+          gap: 10px;
+          display: flex;
+          margin-top: 40%;
+          align-items: center;
+          font-weight: bold;
+          color: black;
         }
       }
     }

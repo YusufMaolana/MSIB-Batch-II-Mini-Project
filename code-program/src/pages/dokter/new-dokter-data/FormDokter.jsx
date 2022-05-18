@@ -1,29 +1,27 @@
 import Navbar from '../../../components/navbar/Navbar';
 import Sidebar from '../../../components/sidebar/Sidebar';
 import React from 'react';
-import './formdokter.scss';
+import './dokterfrom.scss';
 import { useState } from 'react';
 import { gql, useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { color } from '@mui/system';
 
 const insertData = gql`
-  mutation MyMutation($object: rekammedis_pasien_insert_input = {}) {
-    insert_rekammedis_pasien_one(object: $object) {
+  mutation MyMutation($object: rekammedis_dokter_insert_input = {}) {
+    insert_rekammedis_dokter_one(object: $object) {
       alamat
-      diagnosa_awal
-      diagnosa_sekunder
       email
-      hasil_pemeriksaan
       id
       jenis_kelamin
-      nama_pasien
-      no_rekammedis
+      nama_dokter
+      no_induk
       no_telepon
-      obat
-      riwayat_alergi
-      tanggal_pemeriksaan
-      tindakan
+      pendidikan_pertama
+      pendidikan_lanjutan
+      status
+      tanggal_bergabung
+      gelar
     }
   }
 `;
@@ -58,25 +56,22 @@ const FormDokter = () => {
     setState({});
   };
   return (
-    <div className="formdokter">
+    <div className="formedit">
       <Sidebar />
-      <div className="formdokterContainer">
+      <div className="formeditContainer">
         <Navbar />
-        <div className="titleDokter">New Dokter Data</div>
-        <div className="titleFormDokter">
-          <h1>Formulir Data Dokter</h1>
-        </div>
+        <div className="titleTop">New Dokter Data</div>
         <div className="formContainer">
-          <form className="dokterForm">
+          <form>
             <div className="forminput">
               <label className="inputLabel">No Induk Pegawai *</label>
               <input
                 className="inputDokter"
                 type="text"
                 placeholder="001-100"
-                name="no_rekammedis"
+                name="no_induk"
                 onChange={handleonChange}
-                value={state.no_rekammedis || ''}
+                value={state.no_induk || ''}
               />
             </div>
             <div className="forminput">
@@ -84,10 +79,10 @@ const FormDokter = () => {
               <input
                 className="inputDokter"
                 type="text"
-                placeholder="Nama Lengkap"
-                name="nama_pasien"
+                placeholder="Nama Lengkap Beserta Gelar"
+                name="nama_dokter"
                 onChange={handleonChange}
-                value={state.nama_pasien || ''}
+                value={state.nama_dokter || ''}
               />
             </div>
             <div className="forminput">
@@ -107,9 +102,9 @@ const FormDokter = () => {
                 className="inputDokter"
                 type="date"
                 placeholder="MM-DD-YY"
-                name="tanggal_pemeriksaan"
+                name="tanggal_bergabung"
                 onChange={handleonChange}
-                value={state.tanggal_pemeriksaan || ''}
+                value={state.tanggal_bergabung || ''}
               />
             </div>
             <div className="forminput">
@@ -146,40 +141,38 @@ const FormDokter = () => {
               />
             </div>
             <div className="forminput">
-              <label className="inputLabel">
-                Universitas Pendidikan Pertama *
-              </label>
+              <label className="inputLabel">Riwayat Pendidikan Pertama *</label>
               <input
                 className="inputDokter"
                 type="text"
-                name="diagnosa_awal"
-                placeholder="Diagnosa Penyakit Awal"
+                name="pendidikan_pertama"
+                placeholder="Riwayat Pendidikan Pertama"
                 onChange={handleonChange}
-                value={state.diagnosa_awal || ''}
+                value={state.pendidikan_pertama || ''}
               />
             </div>
             <div className="forminput">
               <label className="inputLabel">
-                Universitas Pendidikan Lanjutan*
+                Riwayat Pendidikan Lanjutan *
               </label>
               <input
                 className="inputDokter"
                 type="text"
-                name="diagnosa_sekunder"
-                placeholder="Diagnosa Penyakit Lanjutan"
+                name="pendidikan_lanjutan"
+                placeholder="Riwayat Pendidikan Lanjutan"
                 onChange={handleonChange}
-                value={state.diagnosa_sekunder || ''}
+                value={state.pendidikan_lanjutan || ''}
               />
             </div>
             <div className="forminput">
-              <label className="inputLabel">Gelar Pendidikan Terakhir *</label>
+              <label className="inputLabel">Gelar Kedokteran *</label>
               <input
                 className="inputDokter"
                 type="text"
-                name="riwayat_alergi"
-                placeholder="Alergi Yang Diderita"
+                name="gelar"
+                placeholder="Gelar Kedokteran"
                 onChange={handleonChange}
-                value={state.riwayat_alergi || ''}
+                value={state.gelar || ''}
               />
             </div>
             <div className="forminput">
@@ -187,10 +180,10 @@ const FormDokter = () => {
               <input
                 className="inputDokter"
                 type="text"
-                name="tindakan"
-                placeholder="Inpatient/Outpatient"
+                name="status"
+                placeholder="Present/Absent"
                 onChange={handleonChange}
-                value={state.tindakan || ''}
+                value={state.status || ''}
               />
             </div>
           </form>

@@ -1,0 +1,75 @@
+.formedit {
+  display: flex;
+  background-color: whitesmoke;
+
+  .formeditContainer {
+    flex: 6;
+    .titleTop {
+      margin-top: 10px;
+      margin-left: 20px;
+      font-size: 25px;
+      font-weight: bold;
+      color: rgba(128, 128, 128, 0.26);
+    }
+  }
+  .formContainer {
+    border-style: outset;
+    border-radius: 10px;
+    box-shadow: 0px 17px 28px 1px rgba(0, 0, 0, 0.53);
+    -webkit-box-shadow: 0px 17px 28px 1px rgba(0, 0, 0, 0.53);
+    -moz-box-shadow: 0px 17px 28px 1px rgba(0, 0, 0, 0.53);
+    padding: 20px;
+    margin: 20px;
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 10%;
+      margin-bottom: 10%;
+      row-gap: 20px;
+      column-gap: 90px;
+      margin-left: 150px;
+
+      .forminput {
+        width: 370px;
+
+        .inputDokter {
+          display: flex;
+          width: 100%;
+          height: 32px;
+          padding: 5px;
+          background-color: rgba(128, 128, 128, 0);
+          border-color: rgba(128, 128, 128, 0.473);
+          border-radius: 5px;
+        }
+
+        .inputLabel {
+          gap: 10px;
+          display: flex;
+          margin-bottom: 10px;
+          align-items: center;
+          font-weight: bold;
+          color: #4d44b5;
+
+          .icon {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .btnSave {
+      margin-left: 10%;
+      margin-top: 40px;
+      margin-bottom: 30px;
+      width: 100px;
+      height: 35px;
+      font-size: 13px;
+      border: none;
+      border-radius: 17px;
+      background-color: rgb(4, 196, 4);
+      font-size: 14px;
+      color: white;
+    }
+  }
+}
