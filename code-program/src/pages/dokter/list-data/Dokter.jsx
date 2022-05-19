@@ -17,7 +17,7 @@ import ReportIcon from '@mui/icons-material/Report';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import AssignmentLateIcon from '@mui/icons-material/AssignmentLate';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
-import Loading from '../../../components/loading-page/Loading';
+import Loading from '../../../components/loading/Loading';
 import './dokter.scss';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import { gql, useMutation, useSubscription } from '@apollo/client';

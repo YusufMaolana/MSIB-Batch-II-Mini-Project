@@ -7,7 +7,7 @@ import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 import './home.scss';
 import Calendar from '../../components/widget/calendar/Calendar';
 import ReactClock from '../../components/widget/clock/ReactClock';
-import Loading from '../../components/loading-page/Loading';
+import Loading from '../../components/loading/Loading';
 import { Link } from 'react-router-dom';
 import {
   gql,
@@ -16,7 +16,7 @@ import {
   setLogVerbosity,
   useSubscription,
 } from '@apollo/client';
-const Hitung = gql`
+const HitungPasien = gql`
   subscription MySubscription {
     rekammedis_pasien_aggregate {
       aggregate {
@@ -25,18 +25,32 @@ const Hitung = gql`
     }
   }
 `;
+
+const HitungDokter = gql`
+  subscription MySubscription {
+    rekammedis_dokter_aggregate {
+      aggregate {
+        count(columns: id)
+      }
+    }
+  }
+`;
 const Home = () => {
   const [a, sa] = useState();
-  const { data, loading } = useSubscription(Hitung);
+  const [b, sb] = useState();
+  const { data, loading } = useSubscription(HitungPasien);
+  const { data: datadokter, loading: loadingdokter } =
+    useSubscription(HitungDokter);
   useEffect(() => {
-    if (data) {
+    if (data || datadokter) {
       sa(data?.rekammedis_pasien_aggregate.aggregate.count || '');
+      sb(datadokter?.rekammedis_dokter_aggregate.aggregate.count || '');
     }
-  }, [data]);
+  }, [data, datadokter]);
   console.log(a);
-  if (loading) {
+  if (loading || loadingdokter) {
     return <Loading />;
-  } else if (data) {
+  } else if (data || datadokter) {
     return (
       <div className="home">
         <Sidebar />
@@ -59,7 +73,7 @@ const Home = () => {
               </Link>
               <div className="titleicon">
                 <div className="dokter"> Dokter</div>
-                <div className="count">10</div>
+                <div className="count">{b}</div>
               </div>
             </div>
           </div>

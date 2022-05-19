@@ -4,8 +4,6 @@
 
   .formeditContainer {
     flex: 6;
-    margin-left: 80px;
-    margin-right: 80px;
     .titleTop {
       margin-top: 10px;
       margin-left: 20px;
@@ -76,12 +74,10 @@
     }
 
     .btnKirimInput {
-      margin-top: 10px;
-      margin-left: 10%;
+      margin-left: 120px;
       margin-bottom: 70px;
       width: 100px;
       height: 35px;
-      margin-left: 13;
       font-size: 13px;
       border: none;
       border-radius: 17px;
@@ -89,10 +85,9 @@
       color: white;
     }
     .btnResetInput {
-      margin-left: 10px;
+      margin-left: 5px;
       width: 100px;
       height: 35px;
-      margin-right: 130px;
       font-size: 13px;
       border: none;
       border-radius: 17px;
