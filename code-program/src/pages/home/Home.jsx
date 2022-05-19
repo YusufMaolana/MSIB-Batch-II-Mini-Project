@@ -5,7 +5,6 @@ import Table from '../pasien/table-home-pasien/Table';
 import AccessibleOutlinedIcon from '@mui/icons-material/AccessibleOutlined';
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 import './home.scss';
-import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import Calendar from '../../components/widget/calendar/Calendar';
 import ReactClock from '../../components/widget/clock/ReactClock';
 import Loading from '../../components/loading-page/Loading';

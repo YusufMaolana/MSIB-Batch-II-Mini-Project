@@ -1,5 +1,5 @@
 .sidebar {
-  flex: 1;
+  flex: 0.5cm;
   border-right: 0.5px solid rgb(230, 227, 227);
   min-height: 130vh;
   background-color: #4d44b5;
@@ -59,14 +59,14 @@
         text-decoration: none;
 
         &:hover {
-          height: 30px;
-          background-color: #ffffff8f;
+          height: 47px;
+          background-color: #ffffff77;
           border-top-left-radius: 20px;
           border-bottom-left-radius: 20px;
         }
 
         .icon {
-          font-size: 18px;
+          font-size: 25px;
           color: white;
         }
 

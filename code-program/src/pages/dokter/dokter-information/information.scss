@@ -4,6 +4,8 @@
 
   .informationContainer {
     flex: 6;
+    margin-left: 80px;
+    margin-right: 50px;
     .titleinformation {
       margin-top: 10px;
       margin-left: 20px;
@@ -20,6 +22,7 @@
     -moz-box-shadow: 0px 17px 28px 1px rgba(0, 0, 0, 0.53);
     padding: 20px;
     margin: 30px;
+
     form {
       display: flex;
       flex-wrap: wrap;
@@ -27,7 +30,7 @@
       column-gap: 90px;
       margin-top: 200px;
       margin-bottom: 500px;
-      margin-left: 150px;
+      margin-left: 120px;
 
       .forminput {
         width: 370px;
@@ -72,7 +75,7 @@
           color: black;
         }
         .bawah {
-          margin-left: 40%;
+          margin-left: 42%;
           gap: 10px;
           display: flex;
           margin-top: 40%;

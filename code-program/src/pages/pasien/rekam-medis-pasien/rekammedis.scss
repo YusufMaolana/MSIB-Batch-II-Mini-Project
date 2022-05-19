@@ -4,6 +4,8 @@
 
   .rekammedisContainer {
     flex: 6;
+    margin-left: 80px;
+    margin-right: 50px;
     .titlerekammedis {
       margin-top: 10px;
       margin-left: 20px;
@@ -20,10 +22,9 @@
       -webkit-box-shadow: -3px 11px 84px -21px rgba(0, 0, 0, 0.68);
       -moz-box-shadow: -3px 11px 84px -21px rgba(0, 0, 0, 0.68);
       padding: 5px;
-      margin-left: 20px;
+      margin-left: 27px;
       margin-top: 20px;
-      margin-bottom: 15px;
-      margin-right: 20px;
+      margin-right: 27px;
       display: flex;
       color: white;
       justify-content: center;
@@ -45,7 +46,7 @@
       column-gap: 90px;
       margin-top: 200px;
       margin-bottom: 500px;
-      margin-left: 150px;
+      margin-left: 120px;
 
       .forminput {
         width: 370px;
@@ -92,6 +93,12 @@
           border-color: rgba(128, 128, 128, 0.377);
           border-radius: 5px;
           font-size: 16px;
+        }
+
+        .pgjwb {
+          width: 150px;
+          color: black;
+          font-weight: bold;
         }
 
         label {

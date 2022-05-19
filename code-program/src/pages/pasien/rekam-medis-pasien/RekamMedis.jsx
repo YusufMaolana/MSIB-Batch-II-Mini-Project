@@ -180,7 +180,12 @@ const RekamMedis = () => {
             </div>
             <div className="ttd">
               <label>Dokter Penanggung Jawab </label>
-              <input type="text" name="pemeriksa" value={a?.pemeriksa || ''} />
+              <input
+                className="pgjwb"
+                type="text"
+                name="pemeriksa"
+                value={a?.pemeriksa || ''}
+              />
             </div>
           </form>
         </div>

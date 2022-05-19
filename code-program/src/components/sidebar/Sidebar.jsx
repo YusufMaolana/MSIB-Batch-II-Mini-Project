@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './sidebar.scss';
-import HomeIcon from '@mui/icons-material/Home';
+import GridViewIcon from '@mui/icons-material/GridView';
 import AccessibleOutlinedIcon from '@mui/icons-material/AccessibleOutlined';
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 
@@ -19,7 +19,7 @@ const Sidebar = () => {
         <ul>
           <p className="title">MAIN</p>
           <li>
-            <HomeIcon className="icon" />
+            <GridViewIcon className="icon" />
             <Link to="/" style={{ textDecoration: 'none' }}>
               <span>Dasboard</span>
             </Link>
